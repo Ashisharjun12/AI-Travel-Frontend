@@ -10,6 +10,10 @@ import Login from '../Auth/Login.jsx';
 import Mytrip from '../screens/Mytrip.jsx';
 import Discover from '../screens/Discover.jsx';
 import Profile from '../screens/Profile.jsx';
+import NewTripCard from '../components/NewTripCard.jsx';
+import Search from '../create/Search.jsx';
+import GoBack from '../common/GoBack.jsx';
+import SelectTraveller from '../create/SelectTraveller.jsx';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +66,39 @@ const MainNavigator = () => {
           component={Profile}
           options={{headerShown: false}}
         />
+
+        {/* new trip */}
+         <Stack.Screen
+          name="NewTripCard"
+          component={NewTripCard}
+          options={{headerShown: false}}
+        /> 
+
+
+        {/* create trip */}
+
+        <Stack.Screen
+          name="search"
+          component={Search}
+          options={{headerShown: false}}
+        /> 
+        <Stack.Screen
+          name="selectTraveller"
+          component={SelectTraveller}
+          options={{headerShown: false}}
+        /> 
+
+
+
+        {/* go back */}
+
+        <Stack.Screen
+          name="back"
+          component={GoBack}
+          options={{headerShown: false}}
+        /> 
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
