@@ -6,8 +6,10 @@ import { selectOption } from '../constants/options'
 import OptionCard from './OptionCard'
 import { TripContex } from '../contex/TripContex'
 import SolidButton from '../common/SolidButton'
+import { useNavigation } from '@react-navigation/native'
 
 const SelectTraveller = () => {
+    const navigation = useNavigation()
     const [selectTraveller , setSelectTraveller] = useState()
 
     const {tripData , setTripData} = useContext(TripContex)
@@ -20,6 +22,11 @@ const SelectTraveller = () => {
         )
 
     }, [ selectTraveller])
+
+    const handelContinue = ()=>{
+        navigation.navigate('selectDate')
+
+    }
     return (
         <View style={{ padding: 25, backgroundColor: 'white', height: '100%' }}>
             <View style={{ paddingTop: 10, gap: responsiveHeight(2) }}>
@@ -38,14 +45,14 @@ const SelectTraveller = () => {
             <FlatList data={selectOption}
                 renderItem={({item, index}) => (
                     <TouchableOpacity onPress={()=>{setSelectTraveller(item)}} style={{marginVertical:10}}>
-                        <OptionCard selectedTraveller={selectTraveller} option={item}/>
+                        <OptionCard selectedOption={selectTraveller} option={item}/>
 
                     </TouchableOpacity>
                 )}
             />
 
             {/* continue btn */}
-            <SolidButton title={'Continue'} btnStyle={{marginBottom:responsiveHeight(4)}}/>
+            <SolidButton title={'Continue'} btnStyle={{marginBottom:responsiveHeight(4)}} onclick={handelContinue}/>
 
         </View>
     )

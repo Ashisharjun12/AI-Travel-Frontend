@@ -24,3 +24,29 @@ export const selectOption =[
         people:'5 to 10 People'
     },
 ] 
+
+
+
+export const spendList = [
+    {
+        id:1,
+        title:'Cheap',
+        desc:'Cheap travel plans  affordable',
+        icon:'🪙',
+       
+    },
+    {
+        id:2,
+        title:'Expensive',
+        desc:'Expensive travel plans  affordable',
+        icon:'💵',
+       
+    },
+    {
+        id:3,
+        title:'Luxary',
+        desc:'Luxary travel plans affordable',
+        icon:'💰',
+       
+    },
+]

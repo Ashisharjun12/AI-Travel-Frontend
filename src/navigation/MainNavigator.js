@@ -14,6 +14,10 @@ import NewTripCard from '../components/NewTripCard.jsx';
 import Search from '../create/Search.jsx';
 import GoBack from '../common/GoBack.jsx';
 import SelectTraveller from '../create/SelectTraveller.jsx';
+import SelectDate from '../create/SelectDate.jsx';
+import SelectBudget from '../create/SelectBudget.jsx';
+import ReviewTrip from '../create/ReviewTrip.jsx';
+import BuildTrip from '../create/BuildTrip.jsx';
 
 const Stack = createStackNavigator();
 
@@ -85,6 +89,26 @@ const MainNavigator = () => {
         <Stack.Screen
           name="selectTraveller"
           component={SelectTraveller}
+          options={{headerShown: false}}
+        /> 
+        <Stack.Screen
+          name="selectDate"
+          component={SelectDate}
+          options={{headerShown: false}}
+        /> 
+        <Stack.Screen
+          name="selectBudget"
+          component={SelectBudget}
+          options={{headerShown: false}}
+        /> 
+        <Stack.Screen
+          name="reviewTrip"
+          component={ReviewTrip}
+          options={{headerShown: false}}
+        /> 
+        <Stack.Screen
+          name="buildTrip"
+          component={BuildTrip}
           options={{headerShown: false}}
         /> 
 
