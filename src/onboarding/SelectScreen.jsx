@@ -3,6 +3,7 @@ import React from 'react'
 import SolidButton from '../common/SolidButton'
 import { useNavigation } from '@react-navigation/native'
 import Signup from '../Auth/Signup'
+import { responsiveHeight } from 'react-native-responsive-dimensions'
 
 const SelectScreen = () => {
   const navigation = useNavigation()
@@ -28,7 +29,12 @@ const SelectScreen = () => {
         <Text style={{color:'#7d7d7d' , fontFamily:'Outfit-Regular' , textAlign:'center', fontSize:17, marginTop:20}}>{'Discove Ypur Next Adventure effortlessly. Personalized itineraies at Your Fingertips. Travel Smater with AI Driven insights.'}</Text>
 
         {/* button */}
+        <View style={{marginTop:responsiveHeight(5)}}>
+
         <SolidButton title={'Getting Started'} onclick={handelLogin}/>
+
+        </View>
+        
       </View>
     </View>
   )

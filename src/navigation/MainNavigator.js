@@ -7,6 +7,9 @@ import SelectScreen from '../onboarding/SelectScreen.jsx';
 import AppNavigator from './AppNavigator';
 import Signup from '../Auth/Signup.jsx';
 import Login from '../Auth/Login.jsx';
+import Mytrip from '../screens/Mytrip.jsx';
+import Discover from '../screens/Discover.jsx';
+import Profile from '../screens/Profile.jsx';
 
 const Stack = createStackNavigator();
 
@@ -29,19 +32,36 @@ const MainNavigator = () => {
           component={AppNavigator}
           options={{headerShown: false}}
         />
-    {/* login & signup */}
-    <Stack.Screen
+        {/* login & signup */}
+        <Stack.Screen
           name="signup"
           component={Signup}
           options={{headerShown: false}}
         />
-    <Stack.Screen
+        <Stack.Screen
           name="login"
           component={Login}
           options={{headerShown: false}}
         />
 
-       
+        {/* screens */}
+        <Stack.Screen
+          name="Mytrip"
+          component={Mytrip}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Discover"
+          component={Discover}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,9 +1,10 @@
 import { View, Text , TouchableOpacity} from 'react-native'
 import React from 'react'
 
-const SolidButton = ({title, onclick}) => {
+const SolidButton = ({title, onclick, disabled,btnStyle}) => {
   return (
-    <TouchableOpacity onPress={onclick} style={{backgroundColor:'black', padding:15 , borderRadius:99, marginTop:'25%'}}>
+    <TouchableOpacity disabled={disabled} onPress={onclick} style={[{backgroundColor:'black', padding:15 , borderRadius:9, marginTop:'10%'},btnStyle]}>
+
       <Text style={{color:'white', textAlign:'center', fontFamily:'Outfit-Regular', fontSize:17,}}>{title}</Text>
     </TouchableOpacity>
   )
