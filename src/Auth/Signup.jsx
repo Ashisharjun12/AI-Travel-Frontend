@@ -38,7 +38,7 @@ const Signup = () => {
 
     setLoading(true)
 
-    navigation.navigate('AppNavigator')
+    navigation.navigate('otp')
 
   }
   return (
@@ -65,7 +65,7 @@ const Signup = () => {
         </View>
 
         <View>
-          <SolidButton title={'Create Account'} btnStyle={!allFieldFilled() && styles.disable} onclick={handelCreateAccount} />
+          <SolidButton disabled={!allFieldFilled()} title={'Create Account'} btnStyle={!allFieldFilled() && styles.disable} onclick={handelCreateAccount} />
 
           <BorderButton title={'Login'} onclick={handleLogin} />
         </View>
@@ -82,6 +82,6 @@ export default Signup
 
 const styles = StyleSheet.create({
   disable: {
-    backgroundColor: '#424769'
+    backgroundColor: '#686D76'
   }
 })

@@ -1,4 +1,4 @@
-import { View, Text, FlatList , TouchableOpacity} from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import GoBack from '../common/GoBack'
 import { responsiveHeight } from 'react-native-responsive-dimensions'
@@ -10,27 +10,33 @@ import { useNavigation } from '@react-navigation/native'
 
 const SelectBudget = () => {
     const navigation = useNavigation()
-    const [budget ,setBudget]= useState()
+    const [budget, setBudget] = useState()
 
-    const {tripData , setTripData} = useContext(TripContex)
+    const { tripData, setTripData } = useContext(TripContex)
 
-    useEffect(()=>{
-        selectOption&&setTripData({
-            ...tripData ,
-                budget:budget
-            }
+    useEffect(() => {
+        selectOption && setTripData({
+            ...tripData,
+            budget: budget
+        }
         )
 
-    }, [ budget])
+    }, [budget])
 
-    const handelContinue = ()=>{
+    const handelContinue = () => {
         navigation.navigate('reviewTrip')
 
 
     }
-  return (
-    <View style={{ padding: 25, backgroundColor: 'white', height: '100%' }}>
-      <View style={{ paddingTop: 10, gap: responsiveHeight(2) }}>
+
+    //method
+
+    const validateBtn = () => {
+        return budget == null;
+    }
+    return (
+        <View style={{ padding: 25, backgroundColor: 'white', height: '100%' }}>
+            <View style={{ paddingTop: 10, gap: responsiveHeight(2) }}>
                 <GoBack />
                 <Text style={{ color: 'black', fontSize: 28, fontFamily: 'Outfit-Bold' }}>Budget</Text>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Outfit-Bold' }}>{'Choose Spending Habits for Trips'}</Text>
@@ -38,20 +44,20 @@ const SelectBudget = () => {
 
             {/* flatlist */}
             <FlatList data={spendList}
-            renderItem={({item, index})=>(
-                <TouchableOpacity onPress={()=>{setBudget(item)}} style={{marginVertical:10}}>
-                    <OptionCard selectedOption={budget} option={item}/>
+                renderItem={({ item, index }) => (
+                    <TouchableOpacity onPress={() => { setBudget(item) }} style={{ marginVertical: 10 }}>
+                        <OptionCard selectedOption={budget} option={item} />
 
 
-                </TouchableOpacity>
-  )}
-            
+                    </TouchableOpacity>
+                )}
+
             />
 
             {/* continue btn */}
-            <SolidButton title={'Continue'} btnStyle={{marginBottom:responsiveHeight(4)}} onclick={handelContinue}/>
-    </View>
-  )
+            <SolidButton title={'Continue'} btnStyle={{ marginBottom: responsiveHeight(4), backgroundColor: !validateBtn() ? 'black' : '#686D76' }} disabled={validateBtn()} onclick={handelContinue} />
+        </View>
+    )
 }
 
 export default SelectBudget

@@ -1,4 +1,4 @@
-import { View, Text, FlatList , TouchableOpacity} from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import GoBack from '../common/GoBack'
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
@@ -10,22 +10,29 @@ import { useNavigation } from '@react-navigation/native'
 
 const SelectTraveller = () => {
     const navigation = useNavigation()
-    const [selectTraveller , setSelectTraveller] = useState()
+    const [selectTraveller, setSelectTraveller] = useState()
 
-    const {tripData , setTripData} = useContext(TripContex)
+    const { tripData, setTripData } = useContext(TripContex)
 
-    useEffect(()=>{
+    useEffect(() => {
         setTripData({
-            ...tripData ,
-                traveler:selectTraveller
-            }
+            ...tripData,
+            traveler: selectTraveller
+        }
         )
 
-    }, [ selectTraveller])
+    }, [selectTraveller])
 
-    const handelContinue = ()=>{
+    const handelContinue = () => {
         navigation.navigate('selectDate')
 
+    }
+
+
+    //methods
+
+    const validatebtn = () => {
+        return selectTraveller == null;
     }
     return (
         <View style={{ padding: 25, backgroundColor: 'white', height: '100%' }}>
@@ -37,22 +44,22 @@ const SelectTraveller = () => {
 
             {/* select number of travellerls */}
 
-            <View style={{ marginTop: responsiveHeight(2),  marginBottom:responsiveHeight(2) }}>
+            <View style={{ marginTop: responsiveHeight(2), marginBottom: responsiveHeight(2) }}>
                 <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Bold' }}>{'Choose Your Travels'}</Text>
             </View>
 
             {/* flatlist data */}
             <FlatList data={selectOption}
-                renderItem={({item, index}) => (
-                    <TouchableOpacity onPress={()=>{setSelectTraveller(item)}} style={{marginVertical:10}}>
-                        <OptionCard selectedOption={selectTraveller} option={item}/>
+                renderItem={({ item, index }) => (
+                    <TouchableOpacity onPress={() => { setSelectTraveller(item) }} style={{ marginVertical: 10 }}>
+                        <OptionCard selectedOption={selectTraveller} option={item} />
 
                     </TouchableOpacity>
                 )}
             />
 
             {/* continue btn */}
-            <SolidButton title={'Continue'} btnStyle={{marginBottom:responsiveHeight(4)}} onclick={handelContinue}/>
+            <SolidButton title={'Continue'} btnStyle={{ marginBottom: responsiveHeight(4), backgroundColor: !validatebtn() ? 'black' : '#686D76' }} onclick={handelContinue} disabled={validatebtn()} />
 
         </View>
     )

@@ -33,6 +33,7 @@ const Search = () => {
 
             <GooglePlacesAutocomplete
       placeholder='Search Your Destination...'
+     
       
 
       fetchDetails={true}

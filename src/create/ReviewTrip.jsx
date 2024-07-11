@@ -12,7 +12,7 @@ const ReviewTrip = () => {
 
     const { tripData, setTripData } = useContext(TripContex)
 
-    const buildTrip =()=>{
+    const buildTrip = () => {
         navigation.navigate('buildTrip')
     }
 
@@ -25,55 +25,53 @@ const ReviewTrip = () => {
 
             {/* review your trip details */}
 
-            <View style={{gap:responsiveHeight(3)}}>
+            <View style={{ gap: responsiveHeight(3) }}>
 
-                 {/* destination */}
+                {/* destination */}
 
-            <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
-                <Image source={require('../images/dest.png')} style={{ width: 50, height: 50 }} />
-                <View>
-                    <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Destination'}</Text>
-                    <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{tripData?.locationInfo?.name}</Text>
+                <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center' }}>
+                    <Image source={require('../images/dest.png')} style={{ width: 50, height: 50 }} />
+                    <View style={{ marginLeft: responsiveWidth(12), flex: 1 }}>
+                        <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Destination'}</Text>
+                        <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium', flexWrap: 'wrap' }}>{tripData?.locationInfo?.name}</Text>
+                    </View>
+                </View>
+
+                {/*  dates and days*/}
+                <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
+                    <Image source={require('../images/date.png')} style={{ width: 50, height: 50 }} />
+                    <View>
+                        <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Selected Date'}</Text>
+                        <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{moment(tripData?.startDate).format('DD MMM') + "  To  " + moment(tripData?.endDate).format('DD MMM')} ( {tripData?.totalNumberOfDays + " days"} )</Text>
+                    </View>
+
+
+                </View>
+
+                {/* travel info */}
+
+                <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
+                    <Image source={require('../images/travel.png')} style={{ width: 60, height: 60 }} />
+                    <View>
+                        <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Who is Travelling'}</Text>
+                        <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{tripData?.traveler?.title}</Text>
+                    </View>
+
+
                 </View>
 
 
-            </View>
+                {/* budget */}
 
-            {/*  dates and days*/}
-            <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
-                <Image source={require('../images/date.png')} style={{ width: 50, height: 50 }} />
-                <View>
-                    <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Selected Date'}</Text>
-                    <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{moment(tripData?.startDate).format('DD MMM') + "  To  " + moment(tripData?.endDate).format('DD MMM')} ( {tripData?.totalNumberOfDays + " days"} )</Text>
+                <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
+                    <Image source={require('../images/budget.png')} style={{ width: 60, height: 60 }} />
+                    <View>
+                        <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Budget'}</Text>
+                        <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{tripData?.budget?.title}</Text>
+                    </View>
+
+
                 </View>
-
-
-            </View>
-
-            {/* travel info */}
-
-            <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
-                <Image source={require('../images/travel.png')} style={{ width: 60, height: 60 }} />
-                <View>
-                    <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Who is Travelling'}</Text>
-                    <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{tripData?.traveler?.title}</Text>
-                </View>
-
-
-            </View>
-
-
-            {/* budget */}
-
-            <View style={{ flexDirection: 'row', marginTop: responsiveHeight(4), alignItems: 'center', gap: responsiveWidth(12) }}>
-                <Image source={require('../images/budget.png')} style={{ width: 60, height: 60 }} />
-                <View>
-                    <Text style={{ fontSize: 20, color: 'grey', fontFamily: 'Outfit-Regular' }}>{'Budget'}</Text>
-                    <Text style={{ fontSize: 20, color: 'black', fontFamily: 'Outfit-Medium' }}>{tripData?.budget?.title}</Text>
-                </View>
-
-
-            </View>
 
 
 
@@ -84,9 +82,9 @@ const ReviewTrip = () => {
 
 
             {/* build trip button */}
-            <SolidButton title={'Build My Trip'} btnStyle={{marginTop:responsiveHeight(20)}} onclick={buildTrip}/>
+            <SolidButton title={'Build My Trip'} btnStyle={{ marginTop: responsiveHeight(13) }} onclick={buildTrip} />
 
-           
+
 
 
         </View>

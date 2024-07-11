@@ -18,6 +18,7 @@ import SelectDate from '../create/SelectDate.jsx';
 import SelectBudget from '../create/SelectBudget.jsx';
 import ReviewTrip from '../create/ReviewTrip.jsx';
 import BuildTrip from '../create/BuildTrip.jsx';
+import Otp from '../components/Otp.jsx';
 
 const Stack = createStackNavigator();
 
@@ -121,6 +122,15 @@ const MainNavigator = () => {
           component={GoBack}
           options={{headerShown: false}}
         /> 
+
+        {/* otp verification */}
+
+        <Stack.Screen
+          name="otp"
+          component={Otp}
+          options={{headerShown: false}}
+        /> 
+
 
 
       </Stack.Navigator>

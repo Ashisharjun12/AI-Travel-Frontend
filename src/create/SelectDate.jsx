@@ -65,7 +65,7 @@ const SelectDate = () => {
             </View>
 
             {/* continue btn */}
-            <SolidButton title={'Continue'} btnStyle={{ marginTop: responsiveHeight(32) }} onclick={handelContinue} />
+            <SolidButton title={'Continue'} btnStyle={{ marginTop: responsiveHeight(32), backgroundColor: (startDate || endDate) ? 'black' : '#686D76' }} disabled={!startDate || !endDate} onclick={handelContinue} />
 
         </View>
     )
