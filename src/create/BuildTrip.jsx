@@ -1,9 +1,12 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import LottieView from 'lottie-react-native';
 import { responsiveHeight } from 'react-native-responsive-dimensions';
+import { TripContex } from '../contex/TripContex';
 
 const BuildTrip = () => {
+
+  const { tripData, setTripData } = useContext(TripContex)
   return (
 
     <View style={{padding:15, height:'100%', backgroundColor:'white', }}>
