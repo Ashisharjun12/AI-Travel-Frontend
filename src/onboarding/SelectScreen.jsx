@@ -26,12 +26,12 @@ const SelectScreen = () => {
       <View style={{ backgroundColor: 'white', marginTop: -20, height: '100%', padding: 25, borderTopLeftRadius: 25, borderTopRightRadius: 25 }}>
         <Text style={{ fontSize: 30, color: 'black', fontFamily: 'Outfit-Bold', textAlign: 'center', marginTop:20 }}>AI Travel Planner</Text>
 
-        <Text style={{color:'#7d7d7d' , fontFamily:'Outfit-Regular' , textAlign:'center', fontSize:17, marginTop:20}}>{'Discove Ypur Next Adventure effortlessly. Personalized itineraies at Your Fingertips. Travel Smater with AI Driven insights.'}</Text>
+        <Text style={{color:'#7d7d7d' , fontFamily:'Outfit-Regular' , textAlign:'center', fontSize:20, marginTop:20}}>{'Discove Ypur Next Adventure effortlessly. Personalized itineraies at Your Fingertips. Travel Smater with AI Driven insights.'}</Text>
 
         {/* button */}
         <View style={{marginTop:responsiveHeight(5)}}>
 
-        <SolidButton title={'Getting Started'} onclick={handelLogin}/>
+        <SolidButton title={'Getting Started'} onclick={handelLogin} btnStyle={{marginTop:responsiveHeight(11)}}/>
 
         </View>
         
