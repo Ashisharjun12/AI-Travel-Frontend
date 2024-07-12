@@ -5,6 +5,7 @@ import SolidButton from '../common/SolidButton'
 import BorderButton from '../common/BorderButton'
 import { useNavigation } from '@react-navigation/native'
 import Loader from '../components/Loader'
+import { loginReq } from '../Api/Api'
 
 
 const Login = () => {
@@ -32,9 +33,25 @@ const Login = () => {
     navigation.navigate('signup')
   }
 
-  const handleLogin = ()=>{
+  const handleLogin = async()=>{
     setLoading(true)
-    navigation.navigate('AppNavigator')
+
+    try {
+
+      const res = await loginReq(data)
+      console.log(res.data);
+      navigation.navigate('AppNavigator')
+
+      
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'Network request failed');
+    } finally {
+      setLoading(false);
+    }
+
+
+    
   }
 
   return (

@@ -6,6 +6,8 @@ import BorderButton from '../common/BorderButton'
 import { useNavigation } from '@react-navigation/native'
 import { responsiveHeight } from 'react-native-responsive-dimensions'
 import Loader from '../components/Loader'
+import axios from "react-native-axios"
+import { createAccountReq } from '../Api/Api'
 
 const Signup = () => {
 
@@ -34,11 +36,26 @@ const Signup = () => {
 
   }
 
-  const handelCreateAccount = () => {
+ 
+
+
+
+
+  const handelCreateAccount = async() => {
 
     setLoading(true)
 
-    navigation.navigate('otp')
+    try {
+      const res = await createAccountReq(data);
+      console.log(res.data);
+      console.log(res.data.activationToken);
+      navigation.navigate('otp' , {activation_token:res.data.activationToken});
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'Network request failed');
+    } finally {
+      setLoading(false);
+    }
 
   }
   return (
