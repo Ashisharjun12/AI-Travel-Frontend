@@ -4,11 +4,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Mytrip from '../screens/Mytrip';
 import Discover from '../screens/Discover';
 import Profile from '../screens/Profile';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Bottom = createBottomTabNavigator();
 
 const AppNavigator = () => {
   const [isBottomNavVisible, setBottomNavVisible] = useState(true);
+
+  
+
 
   return (
     <Bottom.Navigator

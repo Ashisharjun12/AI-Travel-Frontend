@@ -11,7 +11,6 @@ const App = () => {
   return (
     <TripContex.Provider  value={{tripData,setTripData}}>
       <MainNavigator/>
-
     </TripContex.Provider>
    
   )

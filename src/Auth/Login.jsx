@@ -6,9 +6,12 @@ import BorderButton from '../common/BorderButton'
 import { useNavigation } from '@react-navigation/native'
 import Loader from '../components/Loader'
 import { loginReq } from '../Api/Api'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 const Login = () => {
+
+
 
   const navigation = useNavigation()
 
@@ -39,13 +42,21 @@ const Login = () => {
     try {
 
       const res = await loginReq(data)
-      console.log(res.data);
-      navigation.navigate('AppNavigator')
+      console.log("access token " ,res.data.accessToken);
+
+      if(res.status ==200){
+        await AsyncStorage.setItem('access_token',res.data.accessToken)
+
+        
+
+        navigation.navigate('AppNavigator')
+      }
+      
 
       
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'Network request failed');
+      Alert.alert('Error', 'Network request failed',error);
     } finally {
       setLoading(false);
     }

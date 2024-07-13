@@ -19,6 +19,7 @@ import SelectBudget from '../create/SelectBudget.jsx';
 import ReviewTrip from '../create/ReviewTrip.jsx';
 import BuildTrip from '../create/BuildTrip.jsx';
 import Otp from '../components/Otp.jsx';
+import UpdatePassword from '../screens/UpdatePassword.jsx';
 
 const Stack = createStackNavigator();
 
@@ -130,6 +131,16 @@ const MainNavigator = () => {
           component={Otp}
           options={{headerShown: false}}
         /> 
+
+        {/* update password */}
+
+        <Stack.Screen
+          name="updatePassword"
+          component={UpdatePassword}
+          options={{headerShown: false}}
+        /> 
+
+
 
 
 
