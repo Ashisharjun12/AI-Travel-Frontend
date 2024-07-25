@@ -1,5 +1,5 @@
 import { View, Text, Image ,TouchableOpacity} from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import GoBack from '../common/GoBack'
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import SolidButton from '../common/SolidButton'
@@ -7,12 +7,16 @@ import { useNavigation } from '@react-navigation/native'
 import { logoutReq } from '../Api/Api'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Loader from '../components/Loader'
+import { ScrollView } from 'react-native-gesture-handler'
+import { profileContex } from '../contex/TripContex'
 
 const Profile = () => {
 
   const navigation = useNavigation()
 
   const [loading, setLoading] = useState(false)
+
+  // const { profile,setProfile} = useContext(profileContex);
 
 
   const handleLogout = async () => {
@@ -45,7 +49,22 @@ const Profile = () => {
 
   }
 
+
+  //handel trip
+  const handelTrip =async()=>{
+    navigation.navigate('Trip')
+
+  }
+
+
+  //handel edit profile
+  const handelEditProfile =async()=>{
+    navigation.navigate('Edit')
+  }
   return (
+    <ScrollView>
+
+    
     <View>
       <Loader visible={loading} />
 
@@ -69,7 +88,7 @@ const Profile = () => {
             <View>
 
               <Text style={{ fontSize: 22, fontFamily: 'Outfit-Medium', color: 'black' }}>{'Ashish Raj'}</Text>
-              <SolidButton title={'Edit'} btnStyle={{ padding: 10 }} />
+              <SolidButton title={'Edit'} btnStyle={{ padding: 10 }} onclick={handelEditProfile}/>
 
 
             </View>
@@ -91,6 +110,14 @@ const Profile = () => {
           <Text style={{ fontSize: 17, color: 'black', fontFamily: 'Outfit-Medium' }}>{'ashishrahul748@gmail.com'}</Text>
 
         </View>
+
+        {/* option mytrip */}
+
+        <TouchableOpacity onPress={handelTrip} style={{ padding: 20, flexDirection: 'row', gap: responsiveWidth(18), alignItems: 'center', backgroundColor: '#f2f2f2', borderRadius: 15, marginTop: responsiveHeight(3), }}>
+          <Image source={require('../images/trip.png')} style={{ width: 43, height: 43, marginLeft: responsiveWidth(5) }} />
+          <Text style={{ fontSize: 17, color: 'black', fontFamily: 'Outfit-Medium', marginLeft: responsiveWidth(-12) }}>{'My Trips'}</Text>
+
+        </TouchableOpacity>
 
         {/* option-2 (update password) */}
 
@@ -122,6 +149,7 @@ const Profile = () => {
 
       </View>
     </View>
+    </ScrollView>
   )
 }
 

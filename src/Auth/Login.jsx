@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image ,TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import TextInputComp from '../common/TextInputComp'
 import SolidButton from '../common/SolidButton'
@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import Loader from '../components/Loader'
 import { loginReq } from '../Api/Api'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 
 
 const Login = () => {
@@ -65,6 +66,14 @@ const Login = () => {
     
   }
 
+
+  //handel forgot password
+  const handelForgotPassword = async()=>{
+    navigation.navigate('Forgotpass')
+   
+
+  }
+
   return (
     <View>
 <Loader visible={loading}/>
@@ -80,7 +89,12 @@ const Login = () => {
         <TextInputComp txtTitle={'Email'} value={email} onChangeTxt={setEmail} placeTitle={'Enter Your Email'}/>
 
         {/* password */}
-        <TextInputComp txtTitle={'Password'} value={password} onChangeTxt={setPassword} placeTitle={'Enter Your Password'} secure={true}/>
+        <TextInputComp txtTitle={'Password'} value={password} onChangeTxt={setPassword} placeTitle={'Enter Your Password'} secure={false}/>
+
+        <TouchableOpacity onPress={handelForgotPassword} style={{marginTop:responsiveHeight(1), marginRight:responsiveWidth(3)}}>
+          {/* forgot password */}
+          <Text style={{color:'black' , fontFamily:'Outfit-Medium' , fontSize:16, textAlign:'right'}}>{'Forgot Password ?'}</Text>
+        </TouchableOpacity>
 
 
         {/* submit */}
@@ -88,6 +102,8 @@ const Login = () => {
         <SolidButton title={'Sign In'} onclick={handleLogin} disabled={!allFieldFilled()} btnStyle={!allFieldFilled() && styles.disable}/>
 
         <BorderButton title={'Create Account'} onclick={handelSignUp}/>
+
+       
 
       </View>
     </View>

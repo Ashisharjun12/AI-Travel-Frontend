@@ -20,6 +20,12 @@ import ReviewTrip from '../create/ReviewTrip.jsx';
 import BuildTrip from '../create/BuildTrip.jsx';
 import Otp from '../components/Otp.jsx';
 import UpdatePassword from '../screens/UpdatePassword.jsx';
+import Trip from '../screens/Trip.jsx';
+import Edit from '../screens/Edit.jsx';
+import Forgotpass from '../screens/Forgotpass.jsx';
+
+
+
 
 const Stack = createStackNavigator();
 
@@ -139,6 +145,33 @@ const MainNavigator = () => {
           component={UpdatePassword}
           options={{headerShown: false}}
         /> 
+
+        {/* trip */}
+
+        <Stack.Screen
+          name="Trip"
+          component={Trip}
+          options={{headerShown: false}}
+        /> 
+
+        {/* edit profile */}
+        <Stack.Screen
+          name="Edit"
+          component={Edit}
+          options={{headerShown: false}}
+        /> 
+
+        {/* forgot password */}
+
+        <Stack.Screen
+          name="Forgotpass"
+          component={Forgotpass}
+          options={{headerShown: false}}
+        /> 
+
+       
+       
+
 
 
 

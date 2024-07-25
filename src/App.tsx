@@ -6,10 +6,11 @@ import { TripContex } from './contex/TripContex.js'
 const App = () => {
 
   const [tripData , setTripData]= useState([])
+  const [profile,setProfile]=useState([])
 
 
   return (
-    <TripContex.Provider  value={{tripData,setTripData}}>
+    <TripContex.Provider  value={{tripData,setTripData,profile ,setProfile}}>
       <MainNavigator/>
     </TripContex.Provider>
    

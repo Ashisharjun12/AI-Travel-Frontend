@@ -7,6 +7,7 @@ import { TextInput } from 'react-native-gesture-handler'
 import SolidButton from '../common/SolidButton'
 import Loader from './Loader'
 import { verifyOtpReq } from '../Api/Api'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Otp = () => {
     const route = useRoute()
@@ -68,7 +69,12 @@ const Otp = () => {
         try {
             const res = await verifyOtpReq(data);
             console.log(res.data)
-            navigation.navigate('AppNavigator')
+       
+
+
+                navigation.navigate('AppNavigator')
+            
+
 
         } catch (error) {
             console.error(error);

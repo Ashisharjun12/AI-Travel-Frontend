@@ -17,6 +17,7 @@ const Splash = () => {
   //methods
   const handleToken = async () => {
     const token = await AsyncStorage.getItem('access_token')
+    
     if (!token) {
       navigation.navigate('selectScreen');
     } else {
