@@ -5,14 +5,14 @@ import { responsiveHeight } from 'react-native-responsive-dimensions';
 import { TripContex } from '../contex/TripContex';
 import { AI_PROMPT } from '../constants/options';
 import { useNavigation } from '@react-navigation/native';
-import {  putTravelDetailsReq } from '../Api/Api';
+import { putTravelDetailsReq } from '../Api/Api';
 
 const BuildTrip = () => {
   const navigation = useNavigation();
   const { tripData, setTripData } = useContext(TripContex);
 
 
-  
+
 
   const generateTrip = async () => {
     const FINAL_PROMPT = AI_PROMPT
@@ -27,7 +27,7 @@ const BuildTrip = () => {
     console.log('Generated Prompt:', FINAL_PROMPT);
 
 
-   
+
 
     const data = {
       FINAL_PROMPT
@@ -36,14 +36,18 @@ const BuildTrip = () => {
     try {
 
       const res = await putTravelDetailsReq(data)
-      console.log("data :" , res.data)
-      navigation.navigate('AppNavigator')
+
       
+      navigation.navigate('AppNavigator')
+      console.log(res.data)
+
     } catch (error) {
       console.error(error);
       Alert.alert('Error', 'Network request failed');
     }
   };
+
+  
 
   useEffect(() => {
     if (tripData) {

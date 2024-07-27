@@ -1,6 +1,6 @@
 import axios from 'react-native-axios';
 
-let BASE_URL = 'https://virginia-kerry-career-sleeve.trycloudflare.com';
+let BASE_URL = 'https://ro-victor-allowance-introduces.trycloudflare.com';
 
 const createAccountReq = async data => {
   try {

@@ -9,6 +9,7 @@ import Loader from './Loader'
 import { verifyOtpReq } from '../Api/Api'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+
 const Otp = () => {
     const route = useRoute()
     const navigation = useNavigation()
@@ -58,6 +59,8 @@ const Otp = () => {
 
 
     }
+
+   
 
 
     //method

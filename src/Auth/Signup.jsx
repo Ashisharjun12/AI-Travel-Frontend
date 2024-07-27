@@ -8,6 +8,8 @@ import { responsiveHeight } from 'react-native-responsive-dimensions'
 import Loader from '../components/Loader'
 import axios from "react-native-axios"
 import { createAccountReq } from '../Api/Api'
+import Toast from "react-native-toast-message"
+
 
 const Signup = () => {
 
@@ -36,7 +38,18 @@ const Signup = () => {
 
   }
 
+     //show toast msg
+     const showToast = () => {
+      Toast.show({
+        type: 'success',
+        text1: "OTP Send To Your Email",
+        position: "top",
+        onShow:()=>console.log('tosta visible')
+      });
+    }
+
  
+
 
 
 
@@ -44,12 +57,15 @@ const Signup = () => {
   const handelCreateAccount = async() => {
 
     setLoading(true)
+    
 
     try {
       const res = await createAccountReq(data);
       console.log(res.data);
       console.log(res.data.activationToken);
-      navigation.navigate('otp' , {activation_token:res.data.activationToken});
+      
+      navigation.navigate('otp' , {activation_token:res.data.activationToken} , showToast());
+      
     } catch (error) {
       console.error(error);
       Alert.alert('Error', 'Network request failed');
